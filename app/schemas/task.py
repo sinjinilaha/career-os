@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
+from uuid import UUID
 
 
 # Base schema (common fields)
@@ -17,7 +18,7 @@ class TaskCreate(TaskBase):
 
 # For response (output)
 class TaskResponse(TaskBase):
-    id: int
+    id: UUID
     status: str
     created_at: datetime
 

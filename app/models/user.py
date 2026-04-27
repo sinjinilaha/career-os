@@ -3,6 +3,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 
 from app.database import Base
 
@@ -17,6 +18,8 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
 
     phone_number = Column(String, nullable=True)
+
+    tasks = relationship("Task", back_populates="user")
 
     created_at = Column(DateTime, default=datetime.utcnow)
 
