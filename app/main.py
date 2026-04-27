@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from sqlalchemy import text
 from app.database import Base, engine
 from app.models import User
-from app.routes import auth
+from app.routes import auth,task
 
 Base.metadata.create_all(bind=engine)
 
@@ -12,6 +12,7 @@ app = FastAPI(
     version="1.0.0"
 )
 app.include_router(auth.router)
+app.include_router(task.router)
 
 @app.get("/")
 def health_check():
